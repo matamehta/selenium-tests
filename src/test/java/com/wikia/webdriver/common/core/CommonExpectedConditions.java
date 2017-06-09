@@ -56,7 +56,7 @@ public class CommonExpectedConditions {
       public Boolean apply(WebDriver from) {
         try {
           String elementsAttributeValue = element.getAttribute(attribute);
-//          PageObjectLogging.log("class in wait", elementsAttributeValue, true);
+          LOGGER.log(Level.INFO,String.format("Attribute %s for %s: %s", attribute, element.toString(), elementsAttributeValue));
           return elementsAttributeValue.contains(value);
         } catch (StaleElementReferenceException e) {
           return null;
