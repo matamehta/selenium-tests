@@ -86,7 +86,7 @@ public class BlogCommentsTests extends NewTestTemplate {
     blogPage.verifyCommentText(commentEdited);
   }
 
-  @Test(groups = "BlogComments_004")
+  @Test(groups = "BlogComments_004", invocationCount = 10)
   public void AdminCanDeleteAComment() {
     WikiBasePageObject base = new WikiBasePageObject();
     base.loginAs(credentials.userNameStaff, credentials.passwordStaff, wikiURL);
@@ -102,7 +102,6 @@ public class BlogCommentsTests extends NewTestTemplate {
     String commentText = blogPage.getFirstCommentText();
     DeletePageObject delete = blogPage.deleteFirstComment();
     delete.submitDeletion();
-
     List<Notification> confirmNotifications = blogPage.getNotifications(NotificationType.CONFIRM);
     Assertion.assertEquals(confirmNotifications.size(),1,
             DeletePageObject.AssertionMessages.INVALID_NUMBER_OF_CONFIRMING_NOTIFICATIONS);

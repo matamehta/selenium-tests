@@ -436,6 +436,7 @@ public class WikiBasePageObject extends BasePageObject {
 
   public List<Notification> getNotifications(){
     List<Notification> notificationList = new ArrayList<>();
+    wait.forElementVisible(notificationElements.stream().findAny().get());
     for (WebElement notificationElement : notificationElements){
       Notification notification = new Notification(driver, notificationElement);
       notificationList.add(notification);
@@ -444,6 +445,7 @@ public class WikiBasePageObject extends BasePageObject {
   }
 
   public List<Notification> getNotifications(NotificationType notificationType){
+    wait.forElementVisible(notificationElements.stream().findAny().get());
     List<Notification> notificationList = getNotifications();
     return notificationList.stream().filter(n -> n.getType().toUpperCase().contains(notificationType.name()))
             .collect(Collectors.toList());

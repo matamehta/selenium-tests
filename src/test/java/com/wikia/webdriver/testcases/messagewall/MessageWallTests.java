@@ -64,7 +64,7 @@ public class MessageWallTests extends NewTestTemplate {
     wall.verifyThreadRemoved();
   }
 
-  @Test(groups = {"MessageWall_003", "MessageWall", "MessageWallTests"})
+  @Test(groups = {"MessageWall_003", "MessageWall", "MessageWallTests"}, invocationCount = 10)
   @Execute(asUser = User.SUS_STAFF)
   @InBrowser(emulator = Emulator.DESKTOP_BREAKPOINT_BIG)
   public void userCanCreateAndCloseMessage() {

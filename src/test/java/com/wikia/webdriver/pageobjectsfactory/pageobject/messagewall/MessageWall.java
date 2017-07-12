@@ -174,8 +174,7 @@ public class MessageWall extends WikiBasePageObject {
     refreshPage();
     setDisplayStyle(NEW_MESSAGE_MENU, "block");
     scrollAndClick(driver.findElement(firstMessageWrapperBy).findElement(moreButtonBy));
-    WebElement closeButton = driver.findElement(closeButtonBy);
-    wait.forElementClickable(closeButton);
+    WebElement closeButton = wait.forElementClickable(closeButtonBy);
     jsActions.scrollElementIntoViewPort(closeButton);
     closeButton.click();
     setDisplayStyle(NEW_MESSAGE_MENU, "none");
